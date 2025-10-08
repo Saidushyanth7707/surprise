@@ -1,209 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>For My Laddu ❤️</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
-    :root {
-      --pink: #ff4d85;
-      --soft: #fff0f6;
-      --bg1: #ffd1e6;
-      --bg2: #ffe9f2;
-      --card: #ffffff;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: 'Poppins', system-ui, sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 20px 16px 60px;
-      overflow-x: hidden;
-      color: #333;
-    }
-    h1 { color: var(--pink); margin: 0; font-size: clamp(22px, 6vw, 28px); text-align: center; }
-    p.lead { color: #7a3a54; text-align: center; margin: 8px 0 16px; }
-    .card {
-      background: var(--card);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-      width: 100%;
-      max-width: 500px;
-      position: relative;
-      text-align: center;
-    }
-    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .card-tile { perspective: 900px; height: 70px; border-radius: 10px; cursor: pointer; }
-    .card-inner { width: 100%; height: 100%; border-radius: 10px; position: relative; transform-style: preserve-3d; transition: transform 0.5s; }
-    .card-tile.flipped .card-inner { transform: rotateY(180deg); }
-    .tile-face { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 26px; border-radius: 10px; backface-visibility: hidden; }
-    .front { background: linear-gradient(180deg, #ffd6e8, #ffd9f1); color: var(--pink); font-weight: 700; }
-    .back { background: linear-gradient(180deg, #fff, #ffe8f5); transform: rotateY(180deg); }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>For My Laddu — Couple Challenge ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
 
-    .btn {
-      background: var(--pink);
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 700;
-      margin: 6px;
-      font-size: 15px;
-      transition: 0.2s;
-    }
-    .btn.ghost { background: transparent; color: var(--pink); border: 2px solid rgba(255,77,133,0.25); }
-    .popup {
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 192, 203, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity .35s;
-      z-index: 9999;
-      padding: 20px;
-    }
-    .popup.show { visibility: visible; opacity: 1; }
-    .popup-content {
-      background: linear-gradient(180deg, #fff8fb, #fff0f6);
-      border-radius: 20px;
-      padding: 24px 20px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(163,42,90,0.2);
-      width: 100%;
-      max-width: 400px;
-    }
-    .popup h2 { color: var(--pink); font-size: clamp(20px, 6vw, 28px); }
-    .popup p { color: #6a3346; font-size: clamp(14px, 4vw, 16px); }
-    .butter {
-      position: fixed;
-      pointer-events: none;
-      font-size: 20px;
-      animation: floatY linear forwards;
-      z-index: 10000;
-    }
-    @keyframes floatY {
-      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-    }
-  </style>
+:root {
+  --pink: #ff4d85;
+  --soft: #fff0f6;
+  --bg1: #ffd1e6;
+  --bg2: #ffe9f2;
+  --card: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 16px 60px;
+  overflow-x: hidden;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+h1 { margin: 0; color: var(--pink); font-size: clamp(22px, 6vw, 28px); }
+
+p.lead {
+  margin: 8px 0 16px;
+  color: #7a3a54;
+  font-weight: 500;
+  font-size: clamp(14px, 4vw, 16px);
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  flex: 1;
+  min-width: 280px;
+  max-width: 500px;
+  position: relative;
+  text-align: center;
+}
+
+.card-title {
+  color: var(--pink);
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.card p { margin-bottom: 16px; }
+
+.btn {
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 6px;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.btn:active { transform: scale(0.97); }
+.btn.ghost { background: transparent; color: var(--pink); border: 2px solid rgba(255,77,133,0.25); }
+
+/* Popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 192, 203, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .35s;
+  z-index: 9999;
+  padding: 20px;
+}
+.popup.show { visibility: visible; opacity: 1; }
+
+.popup-content {
+  background: linear-gradient(180deg, #fff8fb, #fff0f6);
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(163,42,90,0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.popup h2 { color: var(--pink); font-size: clamp(20px, 6vw, 28px); }
+.popup p { color: #6a3346; font-size: clamp(14px, 4vw, 16px); }
+
+/* Cute floaters */
+.butter {
+  position: fixed;
+  pointer-events: none;
+  font-size: 20px;
+  animation: floatY linear forwards;
+  z-index: 10000;
+}
+@keyframes floatY {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+footer.small {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #6b4055;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .wrapper { flex-direction: column; align-items: center; }
+  .card { width: 100%; }
+}
+</style>
 </head>
 <body>
-  <h1>💞 For My Sweet Laddu 💞</h1>
-  <p class="lead">Solve this tiny memory puzzle for a surprise 💘</p>
+<header>
+  <h1>💞 Couple Challenges for My Laddu</h1>
+  <p class="lead">Accept or reject each little challenge… let's see what happens 🌸</p>
+</header>
 
-  <div class="card">
-    <div class="puzzle-title" id="puzzleTitle">Memory Match 💞</div>
-    <div id="puzzleRoot"></div>
+<div class="wrapper">
+  <div class="card" id="challengeCard">
+    <div class="card-title" id="challengeTitle">Loading challenge…</div>
+    <p id="challengeDesc"></p>
+    <div>
+      <button class="btn" id="acceptBtn">Yes 💕</button>
+      <button class="btn ghost" id="rejectBtn">No 😢</button>
+    </div>
     <div style="margin-top:12px;">
-      <button id="newPuzzleBtn" class="btn ghost">New Puzzle</button>
-      <button id="shareBtn" class="btn">Share on WhatsApp</button>
+      <button class="btn ghost" id="shuffleBtn">New Challenge 🔄</button>
     </div>
   </div>
+</div>
 
-  <div class="popup" id="lovePopup">
-    <div class="popup-content">
-      <div style="font-size:48px">💖</div>
-      <h2 id="loveText">I love you, Laddu! 💕</h2>
-      <button class="btn" id="againBtn">Play again</button>
-      <button class="btn ghost" id="closeBtn">Close</button>
-    </div>
+<footer class="small">Made with 💖 by you, for your Laddu.</footer>
+
+<!-- Popup -->
+<div class="popup" id="lovePopup">
+  <div class="popup-content" id="popupContent">
+    <div style="font-size:48px" id="popupEmoji">💖</div>
+    <h2 id="popupTitle">I love you, Laddu! 💕</h2>
+    <p id="popupText">You make my world brighter every single day 🌸</p>
+    <button class="btn" id="againBtn">Next Challenge</button>
+    <button class="btn ghost" id="closeBtn">Close</button>
   </div>
+</div>
 
-  <audio id="soulful" src="soulful.mp3" preload="auto"></audio>
+<audio id="soulful" src="soulful.mp3" preload="auto"></audio>
 
-  <script>
-    const qs = s => document.querySelector(s);
-    const shuffle = a => { for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; };
+<script>
+const qs = (s,r=document)=>r.querySelector(s);
+const popup = qs('#lovePopup');
+const popupEmoji = qs('#popupEmoji');
+const popupTitle = qs('#popupTitle');
+const popupText = qs('#popupText');
+const soulful = qs('#soulful');
 
-    const puzzleRoot = qs('#puzzleRoot');
-    const popup = qs('#lovePopup');
-    const soulful = qs('#soulful');
-    const loveText = qs('#loveText');
+const challenges = [
+  { title: "Send a sweet text!", desc: "Text me 'I love you' right now 💌" },
+  { title: "Share a selfie!", desc: "Send me your cutest selfie 😘" },
+  { title: "Plan a mini date!", desc: "Let's plan a tiny surprise date 🥰" },
+  { title: "Give a compliment!", desc: "Compliment me sincerely today 🌸" },
+  { title: "Do a silly dance!", desc: "Record a cute dance for me 💃" },
+  { title: "Send a voice note!", desc: "Say something cute in a voice note 🎤" },
+  { title: "Draw a heart!", desc: "Draw a little heart and send a pic ❤️" },
+  { title: "Sing a song!", desc: "Sing a short song for me 🎵" },
+  { title: "Send a meme!", desc: "Find a funny meme and send it 😂" },
+  { title: "Make a nickname!", desc: "Give me a cute nickname 😻" },
+  { title: "Plan a surprise!", desc: "Think of a tiny surprise for me 🎁" },
+  { title: "Send a GIF!", desc: "Send a cute or romantic GIF 💌" },
+  { title: "Write a poem!", desc: "Write a short love poem for me ✍️" },
+  { title: "Compliment yourself!", desc: "Tell me one thing you love about yourself 🌟" },
+  { title: "Send a pet pic!", desc: "Send a picture of your pet 🐶🐱" },
+  { title: "Share a favorite memory!", desc: "Tell me a memory that makes you smile 🥰" },
+  { title: "Send a virtual hug!", desc: "Send me a hug emoji 🤗" },
+  { title: "Draw something cute!", desc: "Draw anything cute and send a pic 🎨" },
+  { title: "Send a love quote!", desc: "Share a short romantic quote 💕" },
+  { title: "Dance break!", desc: "Dance for 30 seconds and record it 💃🕺" },
+  { title: "Do a funny face!", desc: "Send a silly face pic 😜" },
+  { title: "Share a favorite song!", desc: "Send me a song you like 🎶" },
+  { title: "Send a compliment!", desc: "Compliment me on something new 🌸" },
+  { title: "Make a heart shape!", desc: "Form a heart with your hands and send a pic ❤️" },
+  { title: "Send a snapshot!", desc: "Take a picture of something beautiful around you 📸" },
+  { title: "Tell a joke!", desc: "Send me a short joke 😂" },
+  { title: "Send an emoji story!", desc: "Describe your day in emojis 📱" },
+  { title: "Share a favorite snack!", desc: "Tell me what yummy snack you love 🍫" },
+  { title: "Record a laugh!", desc: "Send a voice note of your laugh 😄" },
+  { title: "Compliment your pet!", desc: "Say something cute about your pet 🐾" },
+  { title: "Send a good morning!", desc: "Wish me a creative good morning ☀️" },
+  { title: "Send a good night!", desc: "Wish me a cute good night 🌙" },
+  { title: "Send a mini poem!", desc: "Write a tiny 2-line poem for me ✨" },
+  { title: "Send a virtual kiss!", desc: "Send a kiss emoji 😘" },
+  { title: "Do a cute pose!", desc: "Take a cute pose and send a photo 🤳" },
+  { title: "Send a funny sound!", desc: "Record a funny sound effect 🎧" },
+  { title: "Make a doodle!", desc: "Doodle anything cute and send it ✏️" },
+  { title: "Share a favorite place!", desc: "Tell me about a place you love 🌴" },
+  { title: "Send a random fact!", desc: "Tell me one random interesting fact 🧠" },
+  { title: "Share your mood!", desc: "Send one emoji that shows your current mood 😌" },
+  { title: "Send a compliment card!", desc: "Make a small digital card with a compliment 💌" },
+  { title: "Do a silly challenge!", desc: "Try a quick silly challenge and record it 🤪" },
+  { title: "Share a childhood memory!", desc: "Tell me a cute memory from when you were little 🏡" },
+  { title: "Send a happy face!", desc: "Send your happiest selfie 😄" },
+  { title: "Draw a flower!", desc: "Draw a flower and send a picture 🌸" },
+  { title: "Send a tiny gift idea!", desc: "Give me an idea for a small surprise gift 🎁" },
+  { title: "Make a funny nickname!", desc: "Give me a funny nickname 😂" },
+  { title: "Send a love note!", desc: "Write a tiny love note 💕" },
+  { title: "Compliment your outfit!", desc: "Tell me what you like about your outfit today 👗👕" },
+  { title: "Record a silly voice!", desc: "Say a random silly phrase in voice 🎤" },
+  { title: "Share a secret!", desc: "Tell me one small secret 🤫" },
+  { title: "Do a mini art!", desc: "Create a tiny artwork and send it 🎨" },
+  { title: "Send a cute sticker!", desc: "Send me your favorite sticker 🏷️" },
+  { title: "Send a happy GIF!", desc: "Find a cheerful GIF and send it 😍" }
+];
 
-    const messages = [
-      "Miss you, Laddu 💕",
-      "Love you, Laddu 💖",
-      "Kiss me, Laddu 😘",
-      "Hug me, Laddu 🤗",
-      "You’re my world, Laddu 🌸",
-      "My cutest Laddu ever 💞",
-      "Lets go out Laddu 💞",
-    ];
 
-    function renderMemory(){
-      puzzleRoot.innerHTML = '';
-      const symbols = ['💖','🦋','🍰','🌸','🐻','💐'];
-      const deck = shuffle([...symbols, ...symbols]);
-      const grid = document.createElement('div');
-      grid.className='grid';
-      let first=null, second=null, lock=false, matches=0;
-      deck.forEach(sym=>{
-        const tile=document.createElement('div');
-        tile.className='card-tile';
-        tile.innerHTML=`<div class="card-inner">
-          <div class="tile-face front">?</div>
-          <div class="tile-face back">${sym}</div>
-        </div>`;
-        tile.dataset.sym=sym;
-        tile.onclick=()=>{
-          if(lock || tile.classList.contains('matched') || tile===first) return;
-          tile.classList.add('flipped');
-          if(!first){ first=tile; return; }
-          second=tile; lock=true;
-          if(first.dataset.sym===second.dataset.sym){
-            first.classList.add('matched');
-            second.classList.add('matched');
-            first=second=null; lock=false; matches++;
-            if(matches===symbols.length) completeSweet();
-          } else {
-            setTimeout(()=>{ first.classList.remove('flipped'); second.classList.remove('flipped'); first=second=null; lock=false; },600);
-          }
-        };
-        grid.appendChild(tile);
-      });
-      puzzleRoot.appendChild(grid);
-    }
+function pickChallenge(){
+  return challenges[Math.floor(Math.random()*challenges.length)];
+}
 
-    function completeSweet(){
-      loveText.textContent = messages[Math.floor(Math.random()*messages.length)];
-      popup.classList.add('show');
-      spawnHearts(25);
-      if(soulful){ soulful.currentTime=0; soulful.play().catch(()=>{}); }
-    }
+function showChallenge(){
+  const challenge = pickChallenge();
+  qs('#challengeTitle').textContent = challenge.title;
+  qs('#challengeDesc').textContent = challenge.desc;
+}
 
-    function spawnHearts(n){
-      for(let i=0;i<n;i++){
-        const h=document.createElement('div');
-        h.className='butter';
-        h.textContent=['💗','💖','💞'][Math.floor(Math.random()*3)];
-        h.style.left=Math.random()*100+'vw';
-        h.style.fontSize=(10+Math.random()*30)+'px';
-        h.style.animationDuration=(4+Math.random()*5)+'s';
-        document.body.appendChild(h);
-        setTimeout(()=>h.remove(),9000);
-      }
-    }
+function showPopup(accepted){
+  popup.classList.add('show');
+  if(accepted){
+    popupEmoji.textContent='💖💗💞';
+    popupTitle.textContent='I love you, Laddu! 💕';
+    popupText.textContent='You make my world brighter every single day 🌸';
+    if(soulful){ soulful.currentTime=0; soulful.play().catch(()=>{}); }
+    spawnHearts(25);
+  } else {
+    popupEmoji.textContent='😢💔😭';
+    popupTitle.textContent='Oh no!';
+    popupText.textContent='Maybe next time… 💔';
+  }
+}
 
-    qs('#newPuzzleBtn').onclick=()=>renderMemory();
-    qs('#againBtn').onclick=()=>{ popup.classList.remove('show'); setTimeout(renderMemory,400); };
-    qs('#closeBtn').onclick=()=>popup.classList.remove('show');
-    qs('#shareBtn').onclick=()=>{
-      const url=location.href;
-      window.open(`https://wa.me/?text=${encodeURIComponent('Hey Laddu 💕 open this surprise: '+url)}`,'_blank');
-    };
+function spawnHearts(n){
+  for(let i=0;i<n;i++){
+    const h=document.createElement('div');
+    h.className='butter';
+    h.textContent=['💗','💖','💞'][Math.floor(Math.random()*3)];
+    h.style.left=Math.random()*100+'vw';
+    h.style.fontSize=(10+Math.random()*30)+'px';
+    h.style.animationDuration=(4+Math.random()*5)+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),9000);
+  }
+}
 
-    renderMemory();
-  </script>
+qs('#acceptBtn').onclick=()=>showPopup(true);
+qs('#rejectBtn').onclick=()=>showPopup(false);
+qs('#shuffleBtn').onclick=showChallenge;
+qs('#closeBtn').onclick=()=>popup.classList.remove('show');
+qs('#againBtn').onclick=()=>{ popup.classList.remove('show'); setTimeout(showChallenge,400); };
+
+// Initial load
+showChallenge();
+</script>
 </body>
 </html>
