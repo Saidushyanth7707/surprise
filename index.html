@@ -287,8 +287,15 @@ function spawnHearts(n){
   }
 }
 
-qs('#acceptBtn').onclick=()=>showPopup(true);
-qs('#rejectBtn').onclick=()=>showPopup(false);
+qs('#acceptBtn').onclick = () => {
+  console.log("💖 Challenge Accepted:", qs('#challengeTitle').textContent);
+  showPopup(true);
+};
+
+qs('#rejectBtn').onclick = () => {
+  console.log("😢 Challenge Rejected:", qs('#challengeTitle').textContent);
+  showPopup(false);
+};
 qs('#shuffleBtn').onclick=showChallenge;
 qs('#closeBtn').onclick=()=>popup.classList.remove('show');
 qs('#againBtn').onclick=()=>{ popup.classList.remove('show'); setTimeout(showChallenge,400); };
