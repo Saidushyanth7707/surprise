@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>For My Laddu — Love Puzzles ❤️</title>
+  <title>For My Laddu ❤️</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
-
     :root {
       --pink: #ff4d85;
       --soft: #fff0f6;
@@ -14,9 +13,7 @@
       --bg2: #ffe9f2;
       --card: #ffffff;
     }
-
     * { box-sizing: border-box; }
-
     body {
       margin: 0;
       min-height: 100vh;
@@ -30,130 +27,26 @@
       overflow-x: hidden;
       color: #333;
     }
-
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-
-    h1 {
-      margin: 0;
-      color: var(--pink);
-      font-size: clamp(22px, 6vw, 28px);
-    }
-
-    p.lead {
-      margin: 8px 0 16px;
-      color: #7a3a54;
-      font-weight: 500;
-      font-size: clamp(14px, 4vw, 16px);
-    }
-
-    .wrapper {
-      width: 100%;
-      max-width: 1100px;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
+    h1 { color: var(--pink); margin: 0; font-size: clamp(22px, 6vw, 28px); text-align: center; }
+    p.lead { color: #7a3a54; text-align: center; margin: 8px 0 16px; }
     .card {
       background: var(--card);
       border-radius: 16px;
       padding: 20px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-      flex: 1;
-      min-width: 280px;
+      width: 100%;
       max-width: 500px;
       position: relative;
-    }
-
-    .puzzle-title {
-      color: var(--pink);
-      font-weight: 700;
-      margin-bottom: 12px;
       text-align: center;
     }
-
-    #puzzleRoot { min-height: 260px; }
-
-    /* Memory grid */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); gap: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
     .card-tile { perspective: 900px; height: 70px; border-radius: 10px; cursor: pointer; }
     .card-inner { width: 100%; height: 100%; border-radius: 10px; position: relative; transform-style: preserve-3d; transition: transform 0.5s; }
     .card-tile.flipped .card-inner { transform: rotateY(180deg); }
-    .tile-face {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 26px; border-radius: 10px;
-      backface-visibility: hidden;
-    }
+    .tile-face { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 26px; border-radius: 10px; backface-visibility: hidden; }
     .front { background: linear-gradient(180deg, #ffd6e8, #ffd9f1); color: var(--pink); font-weight: 700; }
     .back { background: linear-gradient(180deg, #fff, #ffe8f5); transform: rotateY(180deg); }
 
-    /* Scramble */
-    .letters { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
-    .letter {
-      padding: 8px 10px;
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.05);
-      cursor: pointer;
-      user-select: none;
-      font-weight: 700;
-      font-size: 18px;
-    }
-    .answer-bar {
-      min-height: 46px;
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      border-radius: 10px;
-      background: linear-gradient(180deg, #fff, #fff7fb);
-      margin-top: 10px;
-      font-size: 20px;
-      letter-spacing: 3px;
-      color: var(--pink);
-      text-align: center;
-      word-break: break-word;
-    }
-
-    /* Slider */
-    .reveal-wrap {
-      position: relative;
-      height: 150px;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #ffd7e9, #fff0f2);
-    }
-    .reveal-text {
-      font-size: clamp(20px, 5vw, 28px);
-      font-weight: 800;
-      color: #a32a5a;
-      z-index: 1;
-      text-align: center;
-      padding: 10px;
-    }
-    .reveal-mask {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #ff9ab8, #ff5a8a);
-      transform-origin: left center;
-      width: 0%;
-      transition: width 0.12s linear;
-      opacity: 0.95;
-    }
-
-    .slider { margin-top: 12px; width: 100%; }
-
-    /* Buttons */
     .btn {
       background: var(--pink);
       color: #fff;
@@ -166,10 +59,7 @@
       font-size: 15px;
       transition: 0.2s;
     }
-    .btn:active { transform: scale(0.97); }
     .btn.ghost { background: transparent; color: var(--pink); border: 2px solid rgba(255,77,133,0.25); }
-
-    /* Popup */
     .popup {
       position: fixed;
       inset: 0;
@@ -184,7 +74,6 @@
       padding: 20px;
     }
     .popup.show { visibility: visible; opacity: 1; }
-
     .popup-content {
       background: linear-gradient(180deg, #fff8fb, #fff0f6);
       border-radius: 20px;
@@ -194,11 +83,8 @@
       width: 100%;
       max-width: 400px;
     }
-
     .popup h2 { color: var(--pink); font-size: clamp(20px, 6vw, 28px); }
     .popup p { color: #6a3346; font-size: clamp(14px, 4vw, 16px); }
-
-    /* Cute floaters */
     .butter {
       position: fixed;
       pointer-events: none;
@@ -210,56 +96,25 @@
       0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
       100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
     }
-
-    footer.small {
-      margin-top: 18px;
-      font-size: 13px;
-      color: #6b4055;
-      text-align: center;
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-      .wrapper { flex-direction: column; align-items: center; }
-      .card { width: 100%; }
-      .grid { grid-template-columns: repeat(3, 1fr); }
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>💞 Little Love Puzzles for My Laddu</h1>
-    <p class="lead">Solve a tiny surprise puzzle — when it's complete, love blooms 🌸</p>
-  </header>
+  <h1>💞 For My Sweet Laddu 💞</h1>
+  <p class="lead">Solve this tiny memory puzzle for a surprise 💘</p>
 
-  <div class="wrapper">
-    <div class="card left">
-      <div class="puzzle-title" id="puzzleTitle">Loading puzzle…</div>
-      <div id="puzzleRoot"></div>
-      <div style="margin-top:12px; text-align:center;">
-        <button id="newPuzzleBtn" class="btn ghost">New Puzzle</button>
-      </div>
-    </div>
-
-    <div class="card right">
-      <div style="text-align:center">
-        <div style="font-size:40px;">💗</div>
-        <h3 style="margin:6px 0 10px; color:var(--pink)">A little secret</h3>
-        <p style="margin:0 0 12px">Solve it fully to reveal a surprise popup + music 🎵</p>
-        <button id="shareBtn" class="btn">Share on WhatsApp</button>
-        <button id="downloadBtn" class="btn ghost">Preview</button>
-      </div>
+  <div class="card">
+    <div class="puzzle-title" id="puzzleTitle">Memory Match 💞</div>
+    <div id="puzzleRoot"></div>
+    <div style="margin-top:12px;">
+      <button id="newPuzzleBtn" class="btn ghost">New Puzzle</button>
+      <button id="shareBtn" class="btn">Share on WhatsApp</button>
     </div>
   </div>
 
-  <footer class="small">Made with 💖 by you, for your Laddu.</footer>
-
-  <!-- Popup -->
   <div class="popup" id="lovePopup">
     <div class="popup-content">
       <div style="font-size:48px">💖</div>
-      <h2>I love you, Laddu! 💕</h2>
-      <p>You make my world brighter every single day 🌸</p>
+      <h2 id="loveText">I love you, Laddu! 💕</h2>
       <button class="btn" id="againBtn">Play again</button>
       <button class="btn ghost" id="closeBtn">Close</button>
     </div>
@@ -268,32 +123,30 @@
   <audio id="soulful" src="soulful.mp3" preload="auto"></audio>
 
   <script>
-    const qs = (s, r=document) => r.querySelector(s);
+    const qs = s => document.querySelector(s);
     const shuffle = a => { for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; };
 
     const puzzleRoot = qs('#puzzleRoot');
     const popup = qs('#lovePopup');
     const soulful = qs('#soulful');
-    const puzzles = ['memory','scramble','slider'];
+    const loveText = qs('#loveText');
 
-    function clearRoot(){ puzzleRoot.innerHTML=''; }
-
-    function pickRandomPuzzle(){
-      return puzzles[Math.floor(Math.random()*puzzles.length)];
-    }
-
-    function renderPuzzle(name){
-      clearRoot();
-      if(name==='memory') renderMemory();
-      else if(name==='scramble') renderScramble();
-      else renderSlider();
-    }
+    const messages = [
+      "Miss you, Laddu 💕",
+      "Love you, Laddu 💖",
+      "Kiss me, Laddu 😘",
+      "Hug me, Laddu 🤗",
+      "You’re my world, Laddu 🌸",
+      "My cutest Laddu ever 💞",
+      "Lets go out Laddu 💞",
+    ];
 
     function renderMemory(){
-      qs('#puzzleTitle').textContent = "Memory Match 💞";
-      const symbols = ['💖','🦋','🍰','🌸'];
+      puzzleRoot.innerHTML = '';
+      const symbols = ['💖','🦋','🍰','🌸','🐻','💐'];
       const deck = shuffle([...symbols, ...symbols]);
-      const grid = document.createElement('div'); grid.className='grid';
+      const grid = document.createElement('div');
+      grid.className='grid';
       let first=null, second=null, lock=false, matches=0;
       deck.forEach(sym=>{
         const tile=document.createElement('div');
@@ -322,42 +175,8 @@
       puzzleRoot.appendChild(grid);
     }
 
-    function renderScramble(){
-      const words=['LADDU','LOVE','BUTTERFLY'];
-      const target=words[Math.floor(Math.random()*words.length)];
-      const scramble=shuffle(target.split(''));
-      qs('#puzzleTitle').textContent="Word Scramble 🧩";
-      const bar=document.createElement('div');
-      bar.className='answer-bar';
-      const letterWrap=document.createElement('div');
-      letterWrap.className='letters';
-      let ans='';
-      scramble.forEach(ch=>{
-        const l=document.createElement('div');
-        l.className='letter';
-        l.textContent=ch;
-        l.onclick=()=>{ ans+=ch; l.style.visibility='hidden'; bar.textContent=ans; if(ans===target) completeSweet(); };
-        letterWrap.appendChild(l);
-      });
-      puzzleRoot.append(bar,letterWrap);
-    }
-
-    function renderSlider(){
-      qs('#puzzleTitle').textContent="Slide to Reveal 💘";
-      const wrap=document.createElement('div');
-      wrap.innerHTML=`
-      <div class="reveal-wrap">
-        <div class="reveal-text">I love you, Laddu 💕</div>
-        <div class="reveal-mask"></div>
-      </div>
-      <input type="range" min="0" max="100" value="0" class="slider"/>`;
-      const mask=wrap.querySelector('.reveal-mask');
-      const slider=wrap.querySelector('.slider');
-      slider.oninput=()=>{ mask.style.width=slider.value+'%'; if(slider.value>=98) completeSweet(); };
-      puzzleRoot.appendChild(wrap);
-    }
-
     function completeSweet(){
+      loveText.textContent = messages[Math.floor(Math.random()*messages.length)];
       popup.classList.add('show');
       spawnHearts(25);
       if(soulful){ soulful.currentTime=0; soulful.play().catch(()=>{}); }
@@ -376,12 +195,15 @@
       }
     }
 
-    qs('#newPuzzleBtn').onclick=()=>renderPuzzle(pickRandomPuzzle());
+    qs('#newPuzzleBtn').onclick=()=>renderMemory();
+    qs('#againBtn').onclick=()=>{ popup.classList.remove('show'); setTimeout(renderMemory,400); };
     qs('#closeBtn').onclick=()=>popup.classList.remove('show');
-    qs('#againBtn').onclick=()=>{ popup.classList.remove('show'); setTimeout(()=>renderPuzzle(pickRandomPuzzle()),400); };
+    qs('#shareBtn').onclick=()=>{
+      const url=location.href;
+      window.open(`https://wa.me/?text=${encodeURIComponent('Hey Laddu 💕 open this surprise: '+url)}`,'_blank');
+    };
 
-    qs('#shareBtn').onclick=()=>{ const url=location.href; window.open(`https://wa.me/?text=${encodeURIComponent('Hey Laddu 💕 open this surprise: '+url)}`,'_blank'); };
-    renderPuzzle(pickRandomPuzzle());
+    renderMemory();
   </script>
 </body>
 </html>
